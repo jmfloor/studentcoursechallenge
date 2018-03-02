@@ -23,7 +23,36 @@ namespace ChallengeStudentCourses
              * Initializers.  Then, iterate through each Course and print
              * out the Course's details and the Students that are enrolled in
              * each Course.
-             */ 
+             */
+
+            List<Student> students = new List<Student>() {
+               new Student {StudentId = 0, Name="Johannes", Courses = new List<Course>()},
+               new Student {StudentId = 1, Name="Johannes", Courses = new List<Course>()},
+               new Student {StudentId = 2, Name="Johannes", Courses = new List<Course>()}
+            };
+
+
+            List<Course> courses = new List<Course>() {
+                new Course {CourseId = 1, Name = "Coding001",
+                    Students = new List<Student>() },
+                new Course {CourseId = 2, Name = "Maths001",
+                    Students = new List<Student>() },
+                new Course {CourseId = 3, Name = "Science001",
+                    Students = new List<Student>() } };
+
+            foreach (Course course in courses)
+            {
+                course.Students.Add(students.ElementAt(1));
+            }
+            string result = "";
+
+            foreach  (Course course in courses)
+            {
+                result += course.PrintCourseDetails();
+            }
+            resultLabel.Text = result;
+
+
 
 
 
