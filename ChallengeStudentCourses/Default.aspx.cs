@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace ChallengeStudentCourses
 {
     public partial class Default : System.Web.UI.Page
@@ -67,8 +68,42 @@ namespace ChallengeStudentCourses
              * Object and Collection Initializers.  Then, iterate through
              * each student and print out to the web page each Student's
              * info and the Courses the Student is enrolled in.
-             */ 
+             */
 
+            /*
+             * List<Student> students = new List<Student>() {
+               new Student {StudentId = 0, Name="Johannes", Courses = new List<Course>()},
+               new Student {StudentId = 1, Name="Johannes", Courses = new List<Course>()},
+               new Student {StudentId = 2, Name="Johannes", Courses = new List<Course>()}
+            };
+            */
+
+            List<Course> courses = new List<Course>() {
+                new Course {CourseId = 1, Name = "Coding001",
+                    Students = new List<Student>() },
+                new Course {CourseId = 2, Name = "Maths001",
+                    Students = new List<Student>() },
+                new Course {CourseId = 3, Name = "Science001",
+                    Students = new List<Student>() } };
+
+            Dictionary<string, Student> students = new Dictionary<string, Student>
+            {
+                { "a123", new Student( 123, "J01", courses)},
+                { "a234", new Student( 234, "J02", courses)},
+                { "a345", new Student(345, "J03", courses)}
+            };
+
+            string result = "";
+           
+
+           foreach (Student student in students.Values)
+            {
+                result += student.PrintStudentDetails();
+
+                resultLabel.Text = result;
+            }
+            
+            
 
         }
 
@@ -82,7 +117,7 @@ namespace ChallengeStudentCourses
              * new requirement.  Give each Student a grade in each Course they
              * are enrolled in (make up the data).  Then, for each student, 
              * print out each Course they are enrolled in and their grade.
-             */ 
+             */
 
 
         }
